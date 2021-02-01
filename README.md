@@ -1,2 +1,2 @@
 # EARTE_EDI
-Repositório de disciplina Estrutura de Dados I. 
+Repositório da disciplina Estrutura de Dados I. 
