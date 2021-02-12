@@ -1,0 +1,6 @@
+Operação 	Significado 							Resultado
+
+&count 		Endereço da variável count 				0x7ffebfe2dda4
+&m 			Endereço da variável m 					0x7ffebfe2dda8
+m 			Endereço da variável apontada por m 	0x7ffebfe2dda4
+*m 			Valor da variável apontada por m 		100
