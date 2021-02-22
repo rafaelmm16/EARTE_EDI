@@ -1,0 +1,55 @@
+1-
+a) Está dizendo que o endereço de memória de q é igual ao de p;
+
+b) Está alocando espaço em memória, mas definindo os valores estáticos;
+
+c) Endereço de p recebendo o endereço de c;
+
+d) Está dizendo que o endereço de memória de q é igual ao de p, e limpando o espaço de memória do q antes;
+
+e) Está dizendo que o endereço de memória de q é igual ao de p, mas quando é executado o free, os dois se perdem;
+
+f) Usando um loop para definir valor de memória diversas vezes usando apenas um ponteiro, e a falta do free.
+
+2-
+a) Que o espaço está sendo alocado no parâmetro do 'int';
+
+b) Que os endereços alocados anteriormente já estão sendo ocupados, por isso outros valores;
+
+c) Como o valor é n e esse valor é dado pelo usuário, o endereço de memória pode 'estourar'
+
+d)
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int *a;
+    int n, i;
+    scanf("%d", &n);
+    a = calloc(n , sizeof(int));
+    for (i = 0; i < n; i++) {
+        printf("%p: %d\n", &(a[i]), a[i]);
+    }
+    return 0;
+}
+
+5
+00641628: 0
+0064162C: 0
+00641630: 0
+00641634: 0
+00641638: 0
+
+3-
+a) Ele definiu um valor para cada endereço de memória;
+
+b) Porque o se não o valor 0 encerraria o programa, aí fica -1;
+
+c) A vantagem seria a 'economia' em memória, usando somente o necessário, a desvantagem é que usando alocação dinâmica pode passar dos 500 espaços.
+
+4-
+a) O tamanho da alocação está muito grande, consumindo muito tempo de processamento, fora o fato de que após a execução ele não limpa os espaços alocados;
+
+b) Talvez, mas não é funcional, por que o x só iria funcionar dentro do loop, depois disso ele fica inútil.
+
+5-
+
