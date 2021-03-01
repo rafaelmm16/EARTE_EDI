@@ -9,11 +9,18 @@ int main()
     int ordem = 0;
     int matrizA[ordem][ordem];
     int **matrizB;
+    int matrizC[ordem][ordem];
     int VetPerm[ordem];
 
     scanf("%d", &ordem);
 
-    //matriz A
+    //vetor de permutação
+    for (i = 0; i < ordem; i++)
+    {
+        scanf("%d ", &VetPerm[i]);
+    }
+
+    /*matriz A
     for (i = 0; i < ordem; i++)
     {
         for (j = 0; j < ordem; j++)
@@ -21,13 +28,17 @@ int main()
             scanf("%d", &matrizA[i][j]);
         }
     }
+    */
 
     //matriz B
     matrizB = malloc(ordem * sizeof(int *));
     for (i = 0; i < ordem; i++)
     {
         matrizB[i] = malloc(ordem * sizeof(int));
+
+        scanf("%d ", matrizB[i]);
     }
 
+    free(matrizB);
     return 0;
 }
