@@ -3,7 +3,6 @@
 
 int main()
 {
-    int x0 = 0, x1 = 0;
     int i = 0, j = 0;
     int ordem = 0;
     int **matrizB;
@@ -30,78 +29,15 @@ int main()
     }
 
     //Matriz de Permutação
+
+    //Calculo da matriz C
     for (i = 0; i < ordem; i++)
     {
-        x0 = 0;
-        x1 = 0;
         for (j = 0; j < ordem; j++)
         {
-            if (matrizB[i][j] == 0)
-            {
-                x0++;
-
-                //Calculo da matriz C
-                for (i = 0; i < ordem; i++)
-                {
-                    for (j = 0; j < ordem; j++)
-                    {
-                        matrizC[i][j] = matrizB[i][j] * VetPerm[i];
-                    }
-                }
-            }
-            else if (matrizB[i][j] == 1)
-            {
-                x1++;
-
-                //Calculo da matriz C
-                for (i = 0; i < ordem; i++)
-                {
-                    for (j = 0; j < ordem; j++)
-                    {
-                        matrizC[i][j] = matrizB[i][j] * VetPerm[i];
-                    }
-                }
-            }
+            matrizC[i][j] = matrizB[i][j] * VetPerm[i];
         }
     }
-
-    for (j = 0; j < ordem; j++)
-    {
-        x0 = 0;
-        x1 = 0;
-        for (i = 0; i < ordem; i++)
-        {
-            if (matrizB[i][j] == 0)
-            {
-                x0++;
-                //Calculo da matriz C
-                for (i = 0; i < ordem; i++)
-                {
-                    for (j = 0; j < ordem; j++)
-                    {
-                        matrizC[i][j] = matrizB[i][j] * VetPerm[i];
-                    }
-                }
-            }
-            else
-            {
-                if (matrizB[i][j] == 1)
-                {
-                    x1++;
-                    //Calculo da matriz C
-                    for (i = 0; i < ordem; i++)
-                    {
-                        for (j = 0; j < ordem; j++)
-                        {
-                            matrizC[i][j] = matrizB[i][j] * VetPerm[i];
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    //printf("A matriz e de permutacao\n");
 
     //Impressão da matriz C
     for (i = 0; i < ordem; i++)
@@ -119,6 +55,7 @@ int main()
         matrizB[i] = NULL;
     }
     free(matrizB);
+    free(VetPerm);
     matrizB = NULL;
     return 0;
 }
