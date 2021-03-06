@@ -1,39 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int menorV(int n, int vet[])
+void imprimeLinha(int *linha, int tam) //recebe o ponteiro do vetor da linha, tamanho = n que o usuario digita
 {
-    int menor = 0;
-
-    menor = vet[0];
-    for (int i = 0; i < n; i++)
-    {
-        if (vet[i] < menor)
-        {
-            menor = vet[i];
-        }
-    }
-
-    printf("Menor = %d", menor);
+    for (int i = 0; i < tam; i++) //laço que percorre a linha da matriz
+        printf("%d ", linha[i]);  // imprime os elementos da matriz
+    printf("\n");
 }
 
 int main()
 {
     int i = 0, j = 0;
     int ordem = 0;
-    int max = 0;
     int **matrizB;
     int matrizC[ordem][ordem];
     int matrizA[ordem][ordem];
-    //indica a linha onde tem o 1
     int *VetPerm; // posição e ordem de deslocação
-    int somaprod = 0;
 
-    printf("ordem:\n");
     scanf("%d", &ordem);
 
     //Alocação do vetor de permutação
-    VetPerm = (int *)malloc(ordem * sizeof(int));
+    VetPerm = malloc(ordem * sizeof(int));
     if (VetPerm == NULL)
     {
         printf("Sem memória \n");
@@ -41,70 +28,36 @@ int main()
     }
 
     //vetor de permutação
-    printf("permutacao\n");
     for (i = 0; i < ordem; i++)
     {
         scanf("%d", &VetPerm[i]);
-        //printf("[%d] = %d\n", i, VetPerm[i]);
     }
 
-    //pega o menor elemento do vetor p
-    menorV(ordem, VetPerm);
-
     //Alocação da matriz B
-    matrizB = (int *)malloc(ordem * sizeof(int *));
+    matrizB = malloc(ordem * sizeof(int *));
     for (i = 0; i < ordem; i++)
     {
-        matrizB[i] = (int *)malloc(ordem * sizeof(int));
+        matrizB[i] = malloc(ordem * sizeof(int));
     }
 
     //Leitura da matriz B
-    printf("matriz B:\n");
     for (i = 0; i < ordem; i++)
     {
         for (j = 0; j < ordem; j++)
         {
-            scanf("%d", matrizB[i]);
+            scanf("%d", &matrizB[i][j]);
         }
     }
 
     //matriz C
-    for (i = 0; i < ordem; i++)
+    for (i = 1; i <= ordem; i++) //procura o primeiro elemento
     {
-        for (j = 0; j < ordem; j++)
+        for (j = 0; j < ordem; j++) // percorre o vetor procurando o indice
         {
-                }
-    }
-
-    //Matriz de Permutação
-
-    //Calculo da matriz C
-    /*
-    for (i = 0; i < ordem; i++)
-    {
-        for (j = 0; j < ordem; j++)
-        {
-            somaprod = 0;
-            for (i = 0; i < ordem; i++)
-            {
-                somaprod += matrizA[i][i] * matrizB[i][j];
-                matrizC[i][j] = somaprod;
-            }
-            //matrizC[i][j] = *matrizB[i] * VetPerm[i];
+            if (i == VetPerm[j]) //quando ele acha o indice IMPRIME a matriz
+                imprimeLinha(matrizB[j], ordem);
         }
     }
-*/
-    //Impressão da matriz C
-    for (i = 0; i < ordem; i++)
-    {
-        for (j = 0; j < ordem; j++)
-        {
-            printf("%d ", matrizC[i][j]);
-        }
-        printf("\n");
-    }
-
-    //permutacao(matrizB, i, j, matrizA, matrizC);
 
     for (i = 0; i < ordem; i++)
     {
@@ -114,5 +67,6 @@ int main()
     free(matrizB);
     free(VetPerm);
     matrizB = NULL;
+
     return 0;
 }
