@@ -29,12 +29,11 @@ Racional *inicializaRacional(long n, long d)
         fprintf(stderr, "Sem memória!\n");
         exit(1);
     }
-    else
-    {
-        r->num = n;
-        r->den = d;
-        return r;
-    }
+
+    r->num = n;
+    r->den = d;
+
+    return r;
 }
 
 void liberaRacional(Racional *r)
@@ -88,7 +87,6 @@ Racional *multiplicaRR(Racional *r1, Racional *r2)
     /* Retorna o resultado de r1*r2 */
     //AVISO(Ainda não implementei a função 'multiplicaRR');
     //Racional *res;
-
     Racional *res = (Racional *)malloc(sizeof(Racional));
 
     if (res == NULL)
@@ -110,21 +108,10 @@ Racional *multiplicaRI(Racional *r, long a)
     /* Retorna o resultado de r*a */
     //AVISO(Ainda não implementei a função 'multiplicaRI');
 
-    Racional *res = (Racional *)malloc(sizeof(Racional));
+    r->num = r->num * a;
+    r->den = r->den;
 
-    if (res == NULL)
-    {
-        printf("Sem memoria 02\n");
-        exit(1);
-    }
-
-    else
-    {
-        res->num = r->num * a;
-        res->den = r->den;
-
-        return res;
-    }
+    return r;
     //return NULL;
 }
 
@@ -145,7 +132,6 @@ Racional *somaRR(Racional *r1, Racional *r2)
 {
     /* Retorna o resultado de r1+r2 */
     //AVISO(Ainda não implementei a função 'somaRR');
-
     Racional *res = (Racional *)malloc(sizeof(Racional));
 
     if (res == NULL)
@@ -167,31 +153,21 @@ Racional *somaRI(Racional *r, long a)
     /* Retorna o resultado da soma de r + a */
     //AVISO(Ainda não implementei a função 'somaRR');
 
-    Racional *res = (Racional *)malloc(sizeof(Racional));
+    r->num = (r->den * a) + (r->num * a);
+    r->den = r->den;
 
-    if (res == NULL)
-    {
-        printf("Sem memoria 02\n");
-        exit(1);
-    }
-    else
-    {
-        res->num = (r->den * a) + (r->num * a);
-        res->den = r->den;
-
-        return res;
-    }
+    return r;
 }
 
 int main()
 {
     Racional *x = inicializaRacional(5, 4);
     Racional *y = inicializaRacional(3, 2);
-    Racional *z = inicializaRacional(4, 2);
+    Racional *z = NULL;
 
     imprimeRacional(x);
     imprimeRacional(y);
-    imprimeRacional(z);
+    //imprimeRacional(z);
 
     setDen(x, 13);
     imprimeRacional(x);
@@ -200,7 +176,7 @@ int main()
 
     z = multiplicaRR(x, y);
     imprimeRacional(z);
-    multiplicaRI(z, 3);
+    z = multiplicaRI(z, 3);
     imprimeRacional(z);
     printf("\n");
     z->den = 13;
@@ -225,5 +201,6 @@ int main()
     liberaRacional(x);
     liberaRacional(y);
     liberaRacional(z);
+    liberaRacional(r);
     return 0;
 }
