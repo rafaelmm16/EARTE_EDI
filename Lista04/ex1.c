@@ -23,15 +23,18 @@ Racional *inicializaRacional(long n, long d)
         printf("O denominador deve ser diferente de 0!\n");
         return NULL;
     }
-    Racional *r = malloc(sizeof(Racional));
+    Racional *r = (Racional *)malloc(sizeof(Racional));
     if (r == NULL)
     {
         fprintf(stderr, "Sem memória!\n");
         exit(1);
     }
-    r->num = n;
-    r->den = d;
-    return r;
+    else
+    {
+        r->num = n;
+        r->den = d;
+        return r;
+    }
 }
 
 void liberaRacional(Racional *r)
@@ -70,9 +73,10 @@ long getDen(Racional *r)
 
 void imprimeRacional(Racional *r)
 {
+
     if (r == NULL)
     {
-        printf("Sem memoria \n");
+        printf("Sem memoria 01\n");
         exit(1);
     }
     else
@@ -83,11 +87,22 @@ Racional *multiplicaRR(Racional *r1, Racional *r2)
 {
     /* Retorna o resultado de r1*r2 */
     //AVISO(Ainda não implementei a função 'multiplicaRR');
-    long res;
+    //Racional *res;
 
-    res = r1->num * r2->den;
+    Racional *res = (Racional *)malloc(sizeof(Racional));
 
-    return res;
+    if (res == NULL)
+    {
+        printf("Sem memoria 02\n");
+        exit(1);
+    }
+    else
+    {
+        res->num = r1->num * r2->num;
+        res->den = r1->den * r2->den;
+
+        return res;
+    }
 }
 
 Racional *multiplicaRI(Racional *r, long a)
@@ -95,19 +110,21 @@ Racional *multiplicaRI(Racional *r, long a)
     /* Retorna o resultado de r*a */
     //AVISO(Ainda não implementei a função 'multiplicaRI');
 
-    long res;
+    Racional *res = (Racional *)malloc(sizeof(Racional));
+
     if (res == NULL)
     {
-        printf("Sem memoria \n");
+        printf("Sem memoria 02\n");
         exit(1);
     }
+
     else
     {
-        res = r->den * a;
+        res->num = r->num * a;
+        res->den = r->den;
 
         return res;
     }
-
     //return NULL;
 }
 
@@ -129,11 +146,20 @@ Racional *somaRR(Racional *r1, Racional *r2)
     /* Retorna o resultado de r1+r2 */
     //AVISO(Ainda não implementei a função 'somaRR');
 
-    long res = 0;
+    Racional *res = (Racional *)malloc(sizeof(Racional));
 
-    res = r1 + r2->den;
+    if (res == NULL)
+    {
+        printf("Sem memoria 02\n");
+        exit(1);
+    }
+    else
+    {
+        res->num = (r1->num * r2->den) + (r2->num * r1->den);
+        res->den = (r1->den * r2->den);
 
-    return res;
+        return res;
+    }
 }
 
 Racional *somaRI(Racional *r, long a)
@@ -141,18 +167,28 @@ Racional *somaRI(Racional *r, long a)
     /* Retorna o resultado da soma de r + a */
     //AVISO(Ainda não implementei a função 'somaRR');
 
-    long res = 0;
+    Racional *res = (Racional *)malloc(sizeof(Racional));
 
-    res = r + a;
+    if (res == NULL)
+    {
+        printf("Sem memoria 02\n");
+        exit(1);
+    }
+    else
+    {
+        res->num = (r->den * a) + (r->num * a);
+        res->den = r->den;
 
-    return res;
+        return res;
+    }
 }
 
 int main()
 {
     Racional *x = inicializaRacional(5, 4);
     Racional *y = inicializaRacional(3, 2);
-    Racional *z = inicializaRacional(3, 2);
+    Racional *z = inicializaRacional(4, 2);
+
     imprimeRacional(x);
     imprimeRacional(y);
     imprimeRacional(z);
@@ -175,13 +211,17 @@ int main()
     imprimeRacional(z);
     z = somaRI(z, 3); //Aqui temos um vazamento de mamória. Por quê?
     imprimeRacional(z);
-    /*
-    Racional *r = inicializaRacional (9, 6);
-    if ( comparaRacional (r, y))
-        printf ("São iguais \n");
+
+    Racional *r = inicializaRacional(9, 6);
+    if (comparaRacional(r, y))
+    {
+        printf("São iguais \n");
+    }
     else
-        printf ("São diferentes \n");
-*/
+    {
+        printf("São diferentes \n");
+    }
+
     liberaRacional(x);
     liberaRacional(y);
     liberaRacional(z);
