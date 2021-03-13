@@ -16,23 +16,31 @@ VE1 *criaVE1(int capacidade)
     /*Se for, inicialize n com -1 (indicando que a estrutura está vazia) */
     /*Aloque o array 'P' e retorne o ponteiro da estrutura */
 
-    struct ve1 v1;
-    if (capacidade != NULL)
+    struct ve1 *VE1;
+
+    /*if (VE1 == NULL)
     {
-        v1.n = -1;
+        printf("Sem memoria");
+        exit(1);
     }
-    if (v1.P == NULL)
+    else
+    {*/
+    VE1 = malloc(sizeof(int));
+
+    VE1->n = -1;
+    //}
+    if (VE1->P == NULL)
     {
         printf("Sem memoria");
         exit(1);
     }
     else
     {
-        v1.P = (int *)malloc(capacidade * sizeof(int));
+        VE1->P = (int *)malloc(capacidade * sizeof(int));
         printf("Chega\n");
     }
 
-    return v1.P;
+    return VE1;
 }
 
 void liberaVE1(VE1 *ve)
@@ -51,14 +59,17 @@ void adicionaVE1(VE1 *ve, int v)
     /* Lembre-se de verificar se há espaço para adicionar o elemento */
     /* Complexidade: O(???)  */
 
-    struct ve1 v1;
+    int i = 0;
+    struct ve1 *v1;
 
-    if (ve < ve - 1)
+    v1 = malloc(sizeof(int));
+
+    for (i = 0; i > v1->capacidade; i--)
     {
-        for (int i = 0; i < v1.capacidade; i++)
+        if (ve < v1->capacidade)
         {
-            ve[v1.n] = ve[v];
-            printf("Preencheu\n");
+            ve[i] = ve[v];
+            printf("Preencheu %d\n", ve[i]);
         }
     }
 }
@@ -67,6 +78,20 @@ void removeVE1(VE1 *ve)
 {
     /* Retira o ultimo elemento*/
     /* Complexidade: O(???)  */
+
+    int i = 0;
+    struct ve1 *v1;
+
+    v1 = malloc(sizeof(int));
+
+    for (i = 0; i > v1->capacidade; i--)
+    {
+        if (ve < v1->capacidade)
+        {
+            ve[i] = ve[i + 1];
+            printf("Removeu %d\n", ve[i]);
+        }
+    }
 }
 
 int obtemElementoVE1(VE1 *ve)
