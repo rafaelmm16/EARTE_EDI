@@ -3,8 +3,9 @@
 
 #include "VE2.h"
 
-int main() {
-    VE2  *v2 = criaVE2(5);
+int main()
+{
+    VE2 *v2 = criaVE2(5);
     adicionaVE2(v2, 1);
     adicionaVE2(v2, 2);
     adicionaVE2(v2, 3);
@@ -46,7 +47,8 @@ int main() {
     /*Note que o código insere e remove elementos na estrutura*/
     /*A estrutura tem capacidade = 5 e são inseridos 10 valores*/
     /*Se sua implementação está correta, isso não deve ser problema*/
-    for(int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++)
+    {
         printf("Iteracao %d:\n", i);
         printf(" - Inserindo o valor: %d\n", i);
         adicionaVE2(v, i);
@@ -59,5 +61,7 @@ int main() {
 
     liberaVE2(v2);
     liberaVE2(v);
+
+    system("pause");
     return 0;
 }
