@@ -1,0 +1,19 @@
+EP1 - FotoXop
+Esse EP usa OpenGL. Para conseguir compilá-lo você precisa ter instalado no computador as bibliotecas Glut/Freeglut no Sistema Operacional. 
+
+No Linux (recomendado) você deve instalar o freeglut3-dev:
+sudo apt-get install freeglut3-dev
+No Windows, você pode usar o Code::Blocks
+Baixe o arquivo "FreeGlut_Windows.zip"
+Siga as instruções para conseguir compilar o código no Windows usando o Code::Blocks
+Não mude os nomes dos arquivos e nem acrescente novos arquivos ao projeto. A compilação/correção será feita usando o Makefile (disponível no arquivo FotoXop_Linux.zip),  se ele falhar será considerado erro de compilação (o que representa nota 0). 
+
+Provavelmente, se você testar o código com o Valgrind, ele acusará erros na biblioteca Freeglut. Para resolver esse problema, siga os passos abaixo.
+
+Testar vazamento de memória com o Valgrind
+
+Para testar possíveis vazamentos de memória no seu código, baixe o arquivo Valgrind.zip;
+Extraia os arquivos em alguma pasta;
+Adicione os seus arquivos Imagem[.h, .c] e Filtros[.h, .c] na pasta;
+Execute o comando make memcheck
+Se você estiver no Windows, use o site https://ide.cs50.io/
