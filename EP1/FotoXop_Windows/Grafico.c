@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
@@ -191,6 +192,9 @@ void gerenciaTeclado(unsigned char key, int mx, int my) {
 }
 
 void opcoes() {
+
+    setlocale(LC_ALL, "");
+
     printf("Escolha uma opção:\n"
            " '1' para escurecer a imagem\n"
            " '2' para clarear a imagem\n"

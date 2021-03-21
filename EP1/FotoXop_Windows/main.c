@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 #include "Imagem.h"
 #include "Grafico.h"
 
 int main(int argc, char *argv[]) {
+
+    setlocale(LC_ALL, "");
 
     Imagem* imagem = NULL; //Ponteiro para a imagem
     char nomeArq[100];  //Nome do arquivo

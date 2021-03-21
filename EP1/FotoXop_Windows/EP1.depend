@@ -59,3 +59,44 @@
 1614552183 c:\users\fabio\onedrive\documentos\ep1\grafico.h
 	"Imagem.h"
 
+1616347822 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\grafico.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<locale.h>
+	<GLUT/glut.h>
+	<GL/glut.h>
+	"Imagem.h"
+	"Filtros.h"
+
+1614711394 c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\imagem.h
+
+1615328368 c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\filtros.h
+	"Imagem.h"
+
+1616347568 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\imagem.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<locale.h>
+	"Imagem.h"
+
+1616347348 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	"Imagem.h"
+	"Grafico.h"
+
+1614552183 c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\grafico.h
+	"Imagem.h"
+
+1616348129 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\filtros.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<locale.h>
+	"Imagem.h"
+	"Filtros.h"
+
