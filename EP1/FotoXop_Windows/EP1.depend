@@ -74,7 +74,7 @@
 1615328368 c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\filtros.h
 	"Imagem.h"
 
-1616347568 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\imagem.c
+1616550431 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\imagem.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -92,7 +92,7 @@
 1614552183 c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\grafico.h
 	"Imagem.h"
 
-1616348129 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\filtros.c
+1616351721 source:c:\users\rafael\downloads\github\earte_edi\ep1\fotoxop_windows\filtros.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>

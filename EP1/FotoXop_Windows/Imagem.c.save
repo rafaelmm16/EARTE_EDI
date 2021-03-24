@@ -69,12 +69,27 @@ Imagem *copiaImagem(Imagem *origem)
     /*
      * Verifique se a imagem de origem foi alocada (origem diferente de NULL).
     */
-    if(!img){
-        return;
+    if(origem == NULL){
+        return NULL;
     }
-    
 
-    return NULL;
+    Imagem *copia = NULL;
+    copia = mallocSafe(sizeof(Imagem));
+    
+    copia->largura = img->largura;
+    copia->altura = img->altura;
+
+    copia->pixel = (Pixel**) mallocSafe(sizeof(Pixel*)*img->altura);
+
+    for(int i=0; i<img->altura; i++){
+        copia->pixel[i] = mallocSafe(sizeof(Pixel)*img->largura);
+    }
+
+    for(int = 0; i<img->altura; i++){
+        for(int j=0; j)
+    }
+
+    return copia;
 }
 
 void recolorePixel(Imagem *img, int l, int c, Pixel pixel)
