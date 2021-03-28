@@ -8,8 +8,6 @@
 
 int main(int argc, char *argv[]) {
 
-    setlocale(LC_ALL, "");
-
     Imagem* imagem = NULL; //Ponteiro para a imagem
     char nomeArq[100];  //Nome do arquivo
 

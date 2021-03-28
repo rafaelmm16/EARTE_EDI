@@ -193,7 +193,9 @@ void gerenciaTeclado(unsigned char key, int mx, int my) {
 
 void opcoes() {
 
-    setlocale(LC_ALL, "");
+    system("clear||cls");
+
+    setlocale(LC_ALL,"");
 
     printf("Escolha uma opção:\n"
            " '1' para escurecer a imagem\n"
@@ -206,4 +208,5 @@ void opcoes() {
            " 'z' para desfazer a última modificação\n"
            " 's' para salvar a imagem atual\n"
            " 'x' para encerrar o programa\n");
+
 }
