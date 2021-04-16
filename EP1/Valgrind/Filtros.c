@@ -28,9 +28,6 @@ void escurecerImagem(Imagem *img)
 
 void clarearImagem(Imagem *img)
 {
-    //AVISO(Filtros.c
-          //: Ainda nao implementei a funcao 'clarearImagem'); //Retire esssa mensagem ao implementar a fução
-
     int v;
     printf("Digite o fator de clareamento: ");
     scanf("%d", &v);
@@ -50,8 +47,6 @@ void clarearImagem(Imagem *img)
 
 void escalaDeCinzaImagem(Imagem *img)
 {
-    //AVISO(Filtros.c
-          //: Ainda nao implementei a funcao 'escalaDeCinzaImagem'); //Retire esssa mensagem ao implementar a fução
     int media = 0;
 
     for (int h = 0; h < obtemAltura(img); h++)
@@ -71,10 +66,7 @@ void escalaDeCinzaImagem(Imagem *img)
 
 void filtroSobel(Imagem *img)
 {
-    //AVISO(Filtros.c
-          //: Ainda nao implementei a funcao 'filtroSobel'); //Retire esssa mensagem ao implementar a fução
-
-    /* Dicas:
+   /* Dicas:
      * 1) Se quiser, pode ignorar as bordas das imagens
      * 2) Para o pixel na posição (h, w), obtenha os outros 8 pixels vizinhos e aplique a matriz gx e gy
      *    em cada banda de cor do pixel. Combine o valor obtido por gx e gy e modifique o pixel de img.
@@ -128,7 +120,6 @@ void filtroSobel(Imagem *img)
             blue_y = (int)J1.cor[blue_y]*1 + (int)J4.cor[blue_y]*2 + (int)J7.cor[blue_y]*1
             + (int)J3.cor[blue_y]*(-1) + (int)J6.cor[blue_y]*(-2) + (int)J9.cor[blue_y]*(-1);
 
-             //aplicar a matriz GX E GY -> em cada banda do pixel
             int RED_Count = 0, GREEN_Count = 0, BLUE_Count = 0;
 
             RED_Count = sqrt(pow(red_x, 2) + pow(red_y, 2))/3;
@@ -163,28 +154,24 @@ void filtroSobel(Imagem *img)
             }
         }
     }
+    free(copia);
 }
 
 void deteccaoBordasLaplace(Imagem *img)
 {
-    //AVISO(Filtros.c
-          //: Ainda nao implementei a funcao 'deteccaoBordasLaplace'); //Retire esssa mensagem ao implementar a fução
-
     Imagem *copia = NULL;
     copia = copiaImagem(img);
 
     for (int i = 1; i < obtemAltura(img)-1; i++){
         for (int j = 1; j < obtemLargura(img)-1; j++){
 
-        /*Elementos da parte superior da matriz (eixo Y) ------------------------- */
-        Pixel pixel = obtemPixel(copia, i, j); // *4
+        Pixel pixel = obtemPixel(copia, i, j);
 
-        Pixel I2 = obtemPixel(copia, i-1, j); // * -1
-        Pixel I4 = obtemPixel(copia, i, j+1); // * -1
-        Pixel I6 = obtemPixel(copia, i, j-1); // * -1
-        Pixel I8 = obtemPixel(copia, i+1, j); // * -1
+        Pixel I2 = obtemPixel(copia, i-1, j);
+        Pixel I4 = obtemPixel(copia, i, j+1);
+        Pixel I6 = obtemPixel(copia, i, j-1);
+        Pixel I8 = obtemPixel(copia, i+1, j);
 
-        /*--------------------------------------------------------------------------------------------------- */
         int RED_Count = 0, GREEN_Count = 0, BLUE_Count = 0;
 
         RED_Count = (int)I2.cor[RED]*(-1) + (int)I4.cor[RED]*(-1) + (int)pixel.cor[RED]*4
@@ -200,20 +187,26 @@ void deteccaoBordasLaplace(Imagem *img)
         GREEN_Count = sqrt(GREEN_Count*GREEN_Count + GREEN_Count*GREEN_Count)/3;
         BLUE_Count = sqrt(BLUE_Count*BLUE_Count + BLUE_Count*BLUE_Count)/3;
 
-        //Fazendo a verificação se o velor é valido (0 a 255)
+        //Verificação da soma (0 - 255)
         if (RED_Count < 0){
             RED_Count = 0;
-        }else if (RED_Count > 255){
+        }
+        else if (RED_Count > 255){
             RED_Count = 255;
-        }else if (GREEN_Count < 0){
+        }
+        else if (GREEN_Count < 0){
             GREEN_Count = 0;
-        }else if (GREEN_Count > 255){
+        }
+        else if (GREEN_Count > 255){
             GREEN_Count = 255;
-        }else if (BLUE_Count < 0){
+        }
+        else if (BLUE_Count < 0){
             BLUE_Count = 0;
-        }else if (BLUE_Count > 255){
+        }
+        else if (BLUE_Count > 255){
             BLUE_Count = 255;
-        }else{
+        }
+        else{
             pixel.cor[RED] = RED_Count;
             pixel.cor[GREEN] = GREEN_Count;
             pixel.cor[BLUE] = BLUE_Count;
@@ -222,13 +215,11 @@ void deteccaoBordasLaplace(Imagem *img)
             }
         }
     }
+    free(copia);
 }
 
 void meuFiltro(Imagem *img)
 {
-    //AVISO(Filtros.c
-          //: Ainda nao implementei a funcao 'meuFiltro'); //Retire esssa mensagem ao implementar a função
-
     Imagem *copia = NULL;
     copia = copiaImagem(img);
 
@@ -282,12 +273,11 @@ void meuFiltro(Imagem *img)
             blue_y = (int)J1.cor[blue_y]*2 + (int)J4.cor[blue_y]*4 + (int)J7.cor[blue_y]*8
             + (int)J3.cor[blue_y]*(-2) + (int)J6.cor[blue_y]*(-4) + (int)J9.cor[blue_y]*(-8);
 
-             //aplicar a matriz GX E GY -> em cada banda do pixel
             int RED_Count = 0, GREEN_Count = 0, BLUE_Count = 0;
 
-            RED_Count = sqrt(pow(red_x, 2) + pow(red_y, 2))/3;
-            GREEN_Count = sqrt(pow(green_x, 2) + pow(green_y, 2))/3;
-            BLUE_Count = sqrt(pow(blue_x, 2) + pow(blue_y, 2))/3;
+            RED_Count = sqrt(pow(red_x, 2) + pow(red_y, 2))/6;
+            GREEN_Count = sqrt(pow(green_x, 2) + pow(green_y, 2))/6;
+            BLUE_Count = sqrt(pow(blue_x, 2) + pow(blue_y, 2))/6;
 
             //Verificação da soma (0 - 255)
             if (RED_Count < 0){
@@ -317,4 +307,5 @@ void meuFiltro(Imagem *img)
             }
         }
     }
+    free(copia);
 }

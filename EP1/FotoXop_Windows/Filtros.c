@@ -154,6 +154,7 @@ void filtroSobel(Imagem *img)
             }
         }
     }
+    free(copia);
 }
 
 void deteccaoBordasLaplace(Imagem *img)
@@ -214,6 +215,7 @@ void deteccaoBordasLaplace(Imagem *img)
             }
         }
     }
+    free(copia);
 }
 
 void meuFiltro(Imagem *img)
@@ -305,4 +307,5 @@ void meuFiltro(Imagem *img)
             }
         }
     }
+    free(copia);
 }

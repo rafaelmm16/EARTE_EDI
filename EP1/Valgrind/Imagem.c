@@ -15,9 +15,6 @@ void *mallocSafe(size_t nbytes);
 
 Imagem *alocaImagem(int largura, int altura)
 {
-    //AVISO(Imagem.c: Ainda nao implementei a funcao 'alocaImagem'); //Retire esssa mensagem ao implementar a fução
-
-    /* Você deve usar a função mallocSafe */
     Imagem *img = NULL;
     img = mallocSafe(sizeof(Imagem));
 
@@ -32,10 +29,6 @@ Imagem *alocaImagem(int largura, int altura)
 
 void liberaImagem(Imagem *img)
 {
-    //AVISO(Imagem.c
-          //: Ainda nao implementei a funcao 'liberaImagem'); //Retire esssa mensagem ao implementar a fução
-
-    /* Lembre-se sempre de verificar se o dado foi alocado antes de fazer a desalocação */
     if(!img){
         return;
     }
@@ -63,11 +56,6 @@ Pixel obtemPixel(Imagem *img, int l, int c)
 
 Imagem *copiaImagem(Imagem *origem)
 {
-    //AVISO(Imagem.c
-          //: Ainda nao implementei a funcao 'copiaImagem'); //Retire esssa mensagem ao implementar a fução
-    /*
-     * Verifique se a imagem de origem foi alocada (origem diferente de NULL).
-    */
     if(!origem){
         return NULL;
     }
@@ -176,9 +164,6 @@ Imagem *carregaImagem(const char *nomeArquivo)
 
 void salvaImagem(Imagem *img, const char *nomeArquivo)
 {
-    //AVISO(Imagem.c
-          //: Ainda nao implementei a funcao salvaImagem); //Retire esssa mensagem ao implementar a fução
-
     FILE *arquivo;
     int c, rgb_comp_color;
     arquivo = fopen(nomeArquivo, "w");
