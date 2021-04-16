@@ -1,0 +1,19 @@
+Observações:
+
+Nesse problema, você deve apenas implementar a função juntaLista, não sendo permitido a criação de outras funções e/ou a alocação (uso do malloc) de novos nós. Códigos que não atendam a esse requisito receberão 0;
+Você pode criar outras variáveis ponteiro do tipo nó (por exemplo, No *no = lista->inicio;), só não pode alocar novos nós;
+Baixe os arquivos Lista.h e mEP3.c;
+Como você pode perceber, não existe um arquivo com a função main(). Esse fica por sua conta, mas você deve enviar apenas o arquivo mEP3.c (com a função juntaLista implementada);
+No Coffee já existe a implementação de da função main(), que faz leitura da entrada, chama a função juntaLista, imprime o resultado e faz a desalocação necessária;
+Seu código deve ser compilado com as flags:
+-lm -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wshadow
+Como você deve imaginar, se seu código não compilar, sua nota será 0;
+Teste seu código com o Valgrind. Sua nota será 0 se o Valgrind reportar qualquer erro no seu código;
+Se não tiver o Valgrind instalado, use o site https://ide.cs50.io/
+Após compilar (seguindo o comando de compilação anterior), execute o seguinte comando:
+valgrind --tool=memcheck --leak-check=full ./mEP3
+Digite alguma entrada para testar o seu programa.
+O Coffee não testa, por enquanto, vazamento de memória, mas na correção o Valgrind será usado. 
+Siga o Guia de Estilo (Semana 0). Códigos que não atendam a esse requisito valerão 70% da pontuação;
+Em caso de plágio, será atribuído 0 a todos os envolvidos. Leia o texto Plagio++ da Semana 0;
+A submissão de um código que não implementa o algoritmo requisitado, mas que exibe as saídas esperadas dos testes abertos a partir da comparação de trechos da entrada será considerada fraude e acarretará a atribuição de nota 0;
