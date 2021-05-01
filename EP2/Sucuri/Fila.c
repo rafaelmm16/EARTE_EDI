@@ -21,67 +21,49 @@ Fila *criaFila()
 /* Faz a desalocação da fila */
 void liberaFila(Fila *f)
 {
-    //AVISO(Fila.c: ainda não completei a função 'liberaFila');
-    Fila *aux = f->inicio;
+    Objeto *aux = f->inicio;
+    Objeto *tmp;
     while (aux)
     {
-        Fila *t;
-        t = aux->inicio;
+        tmp = aux;
+        aux = aux->proximo;
         free(aux);
-        aux = t;
     }
+
     free(f);
-    f = NULL;
 }
 
 /* Insere um novo objeto a fila */
 void enqueue(Fila *f, Objeto *o)
 {
-    //AVISO(Fila.c: ainda não completei a função 'enqueue');
-
-    Fila *novo = malloc(sizeof(Fila));
-    novo->n = o->categoria;
-    novo->inicio = NULL;
-    if (filaVazia(f))
-        f->inicio = novo->inicio;
-    else
-        f->fim->proximo = novo->fim;
-
-    f->fim = novo->fim;
+    if (f->inicio == NULL)
+    {
+        f->inicio = o;
+        f->fim = o;
+        f->n++;
+        return;
+    }
+    f->fim->proximo = o;
+    f->fim = f->fim->proximo;
     f->n++;
 }
 
 /*Remove (apaga) o primeiro elemento da fila */
 void dequeue(Fila *f)
 {
-    //AVISO(Fila.c: ainda não completei a função 'dequeue');
-
     if (!filaVazia(f))
     {
-        Fila *tmp;
-        tmp = f->inicio;
+        Objeto *aux = f->inicio;
         f->inicio = f->inicio->proximo;
+        free(aux);
         f->n--;
-        free(tmp);
     }
-    else
-        printf("ERRO: Fila vazia!\n");
 }
 
 /* Retorna o primeiro elemento da fila */
 Objeto *front(Fila *f)
 {
-    //AVISO(Fila.c
-    //: ainda não completei a função 'front');
-
-    if (filaVazia(f))
-    {
-        printf("ERRO: Fila vazia!");
-        return NULL;
-    }
-    else
-        return f->inicio;
-    //return NULL;
+    return f->inicio;
 }
 
 /* Verifica se a fila está vazia */
@@ -95,29 +77,21 @@ int tamanhoFila(Fila *f)
 {
     if (filaVazia(f))
         return 0;
-    return f->n;
+    else
+        return f->n;
 }
 
 /* Retorna uma cópia da fila passada como parâmetro */
 Fila *copiaFila(Fila *f)
 {
-    //AVISO(Fila.c
-    //: ainda não completei a função 'copiaFila');
-
-    if (!f)
+    Fila *Copia = criaFila();
+    Objeto *aux = f->inicio;
+    while (aux)
     {
-        return NULL;
+        enqueue(Copia, copiaObjeto(aux));
+        aux = aux->proximo;
     }
-
-    Fila *copia = NULL;
-    copia = mallocSafe(sizeof(Fila));
-
-    copia->inicio = f->inicio;
-    copia->fim = f->fim;
-    copia->n = f->n;
-
-    return copia;
-    //return NULL;
+    return Copia;
 }
 
 /* Fução que imprime os elementos da fila 
@@ -126,15 +100,12 @@ Fila *copiaFila(Fila *f)
  */
 void imprimeFila(Fila *f, int tipo)
 {
-    Fila *atual;
-    atual = f->inicio;
-    while (atual != NULL)
+    Objeto *aux;
+    for ((aux = f->inicio); (aux->proximo != NULL); (aux = aux->proximo))
     {
-        if (compara(atual->n))
-            printf("%d -> ", atual->n);
-        atual->inicio = atual->inicio;
+        imprimeObjeto(aux, tipo);
     }
-    printf("NULL\n");
+    imprimeObjeto(aux, tipo);
 }
 
 /* Função de Alta Ordem que recebe uma fila e uma função (cb).
@@ -142,6 +113,13 @@ void imprimeFila(Fila *f, int tipo)
  */
 void converteElementosFila(Fila *f, void (*cb)(Objeto *))
 {
-    AVISO(Fila.c
-          : ainda não completei a função 'converteElementosFila');
+    Objeto *aux = f->inicio;
+    while (aux != NULL)
+    {
+        if (f != NULL)
+        {
+            cb(aux);
+        }
+        aux = aux->proximo;
+    }
 }
