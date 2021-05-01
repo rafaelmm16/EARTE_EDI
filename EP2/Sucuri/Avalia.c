@@ -21,10 +21,9 @@ Objeto *avalia(Fila *posFixa)
 
     while (auxFila != NULL)
     {
-        int i = auxFila->categoria;
-        switch (i)
+        int elem = auxFila->categoria;
+        switch (elem)
         {
-
         case 11:
         case 12:
             empilha(p, copiaObjeto(auxFila));
@@ -47,6 +46,7 @@ Objeto *avalia(Fila *posFixa)
             }
             empilha(p, tmp);
             liberaObjeto(aux);
+
             break;
 
         case 5:

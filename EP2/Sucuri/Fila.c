@@ -27,7 +27,7 @@ void liberaFila(Fila *f)
     {
         tmp = aux;
         aux = aux->proximo;
-        free(aux);
+        free(tmp);
     }
 
     free(f);
@@ -114,12 +114,9 @@ void imprimeFila(Fila *f, int tipo)
 void converteElementosFila(Fila *f, void (*cb)(Objeto *))
 {
     Objeto *aux = f->inicio;
-    while (aux != NULL)
+    for ((aux = f->inicio); (aux->proximo != NULL); (aux = aux->proximo))
     {
-        if (f != NULL)
-        {
-            cb(aux);
-        }
-        aux = aux->proximo;
+        cb(aux);
     }
+    cb(aux);
 }
